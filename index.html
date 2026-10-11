@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>نتائج الدفعة 49 – الدور الثاني – كلية الطب البشري – النظام التفاعلي</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', 'Segoe UI', Tahoma, sans-serif;
+        }
+        body {
+            background: linear-gradient(145deg, #eef2f5 0%, #d4dee8 100%);
+            min-height: 100vh;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .system-container {
+            max-width: 1350px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            border-radius: 56px;
+            box-shadow: 0 30px 55px -15px rgba(0, 0, 0, 0.35);
+            padding: 35px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+        .university-header {
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .uni-faculty-container {
+            background: linear-gradient(135deg, #1e3a5f, #0a2f44);
+            color: white;
+            padding: 25px 50px;
+            border-radius: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 25px -10px rgba(10, 47, 68, 0.5);
+            border: 2px solid #d4a76a;
+            width: fit-content;
+        }
+        .uni-faculty-container h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+        }
+        .uni-faculty-container h2 {
+            font-size: 2.2rem;
+            color: #f5dba8;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+        .program-badge {
+            background: #ffffff;
+            color: #1e3a5f;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 40px;
+            border-radius: 60px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            border: 3px solid #f5b041;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+        }
+        .uni-president {
+            font-size: 1.9rem;
+            font-weight: 900;
+            color: #8B4513;
+            background: linear-gradient(115deg, #fef3e2, #fae9cf);
+            padding: 15px 50px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 25px;
+            border: 2px solid #e2b87a;
+            box-shadow: 0 8px 20px -5px rgba(139, 69, 19, 0.3);
+        }
+        .officials-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 10px;
+        }
+        .system-designer {
+            font-size: 1.4rem;
+            color: #1e3a5f;
+            background: #eef2f6;
+            padding: 15px 40px;
+            border-radius: 20px;
+            border-right: 6px solid #1e3a5f;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: 800;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+        }
+        .system-designer .highlight {
+            color: #2c6e9e;
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+        .system-designer .title {
+            font-size: 1.2rem;
+            color: #e67e22;
+            font-weight: 800;
+            margin-top: 5px;
+        }
+        .dean-container {
+            font-size: 1.6rem;
+            color: #0a2f44;
+            background: #fff6e6;
+            padding: 15px 45px;
+            border-radius: 30px;
+            border-left: 6px solid #f5b041;
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            font-weight: 800;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .dean-container .dean-icon {
+            background: #f5b041;
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            font-size: 2.2rem;
+        }
+        .vice-coord-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            align-items: center;
+        }
+        .vice-dean-container {
+            font-size: 1.4rem;
+            color: #0a2f44;
+            background: #fff6e6;
+            padding: 10px 30px;
+            border-radius: 30px;
+            border-left: 6px solid #2ecc71;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 800;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+        }
+        .vice-dean-container .vd-icon {
+            background: #2ecc71;
+            color: white;
+            padding: 8px;
+            border-radius: 50%;
+            font-size: 1.6rem;
+        }
+        .coordinator-container {
+            font-size: 1.4rem;
+            color: #0a2f44;
+            background: #fff6e6;
+            padding: 10px 30px;
+            border-radius: 30px;
+            border-left: 6px solid #9b59b6;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 800;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+        }
+        .coordinator-container .coord-icon {
+            background: #9b59b6;
+            color: white;
+            padding: 8px;
+            border-radius: 50%;
+            font-size: 1.6rem;
+        }
+        .heads-section {
+            margin: 25px auto 15px auto;
+            background: #fef9ef;
+            border-radius: 50px;
+            padding: 15px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 35px;
+            border: 1px solid #f5dba8;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 1100px;
+        }
+        .head-item {
+            text-align: center;
+            min-width: 180px;
+            background: white;
+            padding: 8px 20px;
+            border-radius: 60px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-right: 4px solid #f5b041;
+        }
+        .head-item .dept {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1e3a5f;
+        }
+        .head-item .name {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #8B4513;
+        }
+        .registrar-wrapper {
+            margin-top: 5px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+        }
+        .registrar-container {
+            background: #eef2f6;
+            border-radius: 60px;
+            padding: 12px 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #1e3a5f;
+            border: 1px solid #cde0ef;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .registrar-container .icon {
+            font-size: 1.8rem;
+        }
+        .stats-toggle-btn {
+            background: linear-gradient(135deg, #f5b041, #f39c12);
+            border: none;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 800;
+            padding: 12px 32px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 15px auto;
+            box-shadow: 0 8px 18px rgba(243, 156, 18, 0.3);
+            transition: 0.25s;
+            width: fit-content;
+        }
+        .stats-toggle-btn:hover {
+            transform: translateY(-3px);
+        }
+        .subjects-toggle-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border: none;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 800;
+            padding: 12px 32px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 15px auto 30px auto;
+            box-shadow: 0 8px 18px rgba(52, 152, 219, 0.3);
+            transition: 0.25s;
+            width: fit-content;
+        }
+        .subjects-toggle-btn:hover {
+            transform: translateY(-3px);
+        }
+        .stats-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-in-out, padding 0.4s;
+            background: white;
+            border-radius: 40px;
+            margin: 0 auto;
+            width: 98%;
+            opacity: 0;
+        }
+        .stats-container.active {
+            max-height: 2000px;
+            padding: 25px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+            margin-bottom: 35px;
+            opacity: 1;
+            border: 1px solid #e2eef9;
+        }
+        .subjects-stats-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-in-out, padding 0.4s;
+            background: #eef4fa;
+            border-radius: 40px;
+            margin: 0 auto;
+            width: 98%;
+            opacity: 0;
+        }
+        .subjects-stats-container.active {
+            max-height: 2500px;
+            padding: 25px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+            margin-bottom: 35px;
+            opacity: 1;
+            border: 1px solid #cde0ef;
+        }
+        .stats-section-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #1e3a5f;
+            margin: 20px 0 10px 0;
+            padding: 8px 20px;
+            background: #f0f4f9;
+            border-radius: 30px;
+            display: inline-block;
+            border-right: 4px solid #f5b041;
+        }
+        .stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .stats-row .stat-card {
+            flex: 1;
+            min-width: 120px;
+        }
+        .success-rate-box {
+            background: #f0f8ff;
+            border-radius: 28px;
+            padding: 15px 20px;
+            border: 2px solid #2ecc71;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+        .success-rate-box .stat-card {
+            flex: 1;
+            min-width: 150px;
+            background: white;
+            border: 1px solid #b8d4e3;
+        }
+        .success-rate-box .stat-card .title {
+            color: #1b5e20;
+        }
+        .grade-row .stat-card {
+            flex: 1;
+            min-width: 100px;
+        }
+        .stat-card {
+            background: #f8fcff;
+            border-radius: 28px;
+            padding: 15px 20px;
+            text-align: center;
+            border: 1px solid #cde3f2;
+            transition: transform 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: #fffef7;
+        }
+        .stat-card .title {
+            font-size: 1rem;
+            color: #1e3a5f;
+            font-weight: 800;
+        }
+        .stat-card .val {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #0a2f44;
+        }
+        .stat-card .perc {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #e67e22;
+            background: #fef0e0;
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 40px;
+            margin-top: 5px;
+        }
+        .success-rate-card {
+            background: linear-gradient(135deg, #d4fc79, #96e6a1);
+            border: 2px solid #2e7d32;
+        }
+        .success-rate-card .title {
+            color: #1b5e20;
+            font-size: 1.1rem;
+        }
+        .success-rate-card .val {
+            color: #1b5e20;
+            font-size: 2.4rem;
+        }
+        .charts-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .chart-box {
+            background: #ffffffdd;
+            padding: 15px;
+            border-radius: 28px;
+            width: 45%;
+            min-width: 280px;
+        }
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            justify-content: center;
+        }
+        .subject-card {
+            background: white;
+            border-radius: 32px;
+            padding: 20px 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            border-top: 8px solid #f5b041;
+            transition: transform 0.2s;
+            width: 100%;
+        }
+        .subject-card:hover {
+            transform: translateY(-5px);
+        }
+        .subject-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #1e3a5f;
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f5dba8;
+            display: block;
+        }
+        .subject-stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .subject-stats-row .mini-stat {
+            flex: 1;
+            min-width: 80px;
+            background: #f8fcff;
+            border-radius: 20px;
+            padding: 10px 12px;
+            text-align: center;
+            border: 1px solid #cde3f2;
+        }
+        .subject-stats-row .mini-stat .mini-title {
+            font-size: 0.8rem;
+            color: #1e3a5f;
+            font-weight: 700;
+        }
+        .subject-stats-row .mini-stat .mini-val {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #0a2f44;
+        }
+        .subject-stats-row .mini-stat .mini-perc {
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #e67e22;
+            background: #fef0e0;
+            display: inline-block;
+            padding: 1px 8px;
+            border-radius: 30px;
+            margin-top: 2px;
+        }
+        .subject-grade-dist {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #ddd;
+        }
+        .subject-grade-dist .gd-item {
+            background: #fef7e0;
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .subject-grade-dist .gd-item span {
+            background: #fff;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-right: 4px;
+        }
+        @media (max-width: 700px) {
+            .subjects-grid { grid-template-columns: 1fr; }
+            .subject-stats-row .mini-stat { min-width: 60px; }
+        }
+        .search-card {
+            background: white;
+            border-radius: 100px;
+            padding: 7px 7px 7px 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 18px 32px -12px rgba(0, 0, 0, 0.2);
+            margin-bottom: 38px;
+            margin-top: 30px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            background: linear-gradient(white, white) padding-box, linear-gradient(135deg, #f5b041, #e67e22) border-box;
+        }
+        .search-card:focus-within {
+            box-shadow: 0 20px 35px -10px rgba(245, 176, 65, 0.4);
+            transform: scale(1.01);
+        }
+        .search-card input {
+            flex: 1;
+            border: none;
+            padding: 16px 20px;
+            font-size: 1.2rem;
+            border-radius: 80px;
+            background: transparent;
+            font-weight: 600;
+            color: #0a2f44;
+            direction: ltr;
+            text-align: center;
+            outline: none;
+        }
+        .search-card input::placeholder {
+            color: #a0b8ce;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .search-card button {
+            background: linear-gradient(115deg, #1e3a5f, #2c5a7a);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 800;
+            padding: 12px 36px;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .search-card button:hover {
+            background: linear-gradient(115deg, #0f2c40, #1e4a6e);
+            transform: scale(0.97);
+        }
+        .search-card button::before {
+            content: "🔍";
+            font-size: 1.3rem;
+        }
+        .student-result {
+            background: rgba(255, 255, 245, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 48px;
+            padding: 20px 25px 30px;
+            border: 1px solid rgba(255, 255, 210, 0.9);
+            box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.15);
+        }
+        .student-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(125deg, #0a2f44, #124263);
+            color: white;
+            padding: 18px 30px;
+            border-radius: 48px;
+            margin-bottom: 25px;
+        }
+        .student-name {
+            font-size: 1.9rem;
+            font-weight: 800;
+        }
+        .student-id {
+            background: #f5b041;
+            padding: 10px 28px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 1.7rem;
+            color: #202020;
+        }
+        .grades-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+            margin-bottom: 24px;
+        }
+        .grades-table th {
+            background: #1e3a5f;
+            color: white;
+            padding: 16px 8px;
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+        .grades-table th:first-child { border-radius: 0 15px 15px 0; }
+        .grades-table th:last-child { border-radius: 15px 0 0 15px; }
+        .grades-table td {
+            padding: 14px 8px;
+            text-align: center;
+            background: white;
+            font-weight: 600;
+            color: #153e57;
+            border-top: 1px solid #eef2f5;
+            border-bottom: 1px solid #eef2f5;
+            vertical-align: middle;
+        }
+        .grades-table tr td:first-child {
+            border-right: 1px solid #eef2f5;
+            border-radius: 0 20px 20px 0;
+            background: linear-gradient(120deg, #fef9e6, #fff6e6);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #8B4513;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.05);
+            width: 22%;
+            box-shadow: inset 0 0 0 1px #fff8, 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        .grades-table tr td:first-child span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245, 176, 65, 0.2);
+            padding: 8px 18px;
+            border-radius: 60px;
+        }
+        .grades-table tr td:last-child {
+            border-left: 1px solid #eef2f5;
+            border-radius: 15px 0 0 15px;
+        }
+        .grades-table tr:hover td {
+            background: #fffcf5;
+            border-color: #f5dba8;
+        }
+        .numeric-cell {
+            display: inline-block;
+            background: #fdfaf4;
+            border: 2px solid #e2b87a;
+            color: #8B4513;
+            font-weight: 900;
+            font-size: 1.1rem;
+            padding: 6px 16px;
+            border-radius: 15px;
+            min-width: 80px;
+        }
+        .score-info {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #2c6e9e;
+            background: #f0f6fc;
+            border-radius: 12px;
+            padding: 4px 8px;
+            margin-top: 6px;
+            display: inline-block;
+            text-align: center;
+            direction: ltr;
+        }
+        .grade-badge {
+            display: inline-block;
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1rem;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .grade-badge.excellent { background: #27ae60; }
+        .grade-badge.verygood { background: #82e0aa; color: #0a2f44; }
+        .grade-badge.good { background: #3498db; }
+        .grade-badge.pass { background: #f39c12; }
+        .grade-badge.fail { background: #e74c3c; }
+        .final-summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            background: #eef2f0aa;
+            padding: 25px 20px;
+            border-radius: 48px;
+            margin: 25px 0 30px;
+            border: 1px solid #ffdd99;
+        }
+        .summary-item {
+            background: white;
+            padding: 15px 40px;
+            border-radius: 80px;
+            text-align: center;
+            min-width: 200px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s;
+        }
+        .summary-item:hover {
+            transform: translateY(-3px);
+            background: #fffef5;
+        }
+        .summary-item .label {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .summary-item .value {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #0b3b5c;
+            line-height: 1.2;
+        }
+        .grade-value {
+            background: linear-gradient(135deg, #f9f3e0, #fff5e8);
+            border-radius: 30px;
+            padding: 12px 24px;
+            display: inline-block;
+            font-weight: 900;
+        }
+        .signatures {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px dashed #d4a76a;
+        }
+        .signature-item {
+            text-align: center;
+            min-width: 220px;
+        }
+        .signature-title {
+            font-weight: 800;
+            color: #1f5e8e;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        .signature-name {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+        .print-btn {
+            background: #2c5a7a;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 12px 38px;
+            border-radius: 60px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+        .print-btn:hover {
+            background: #1e4663;
+            transform: scale(0.97);
+        }
+        .footer-note {
+            margin-top: 30px;
+            text-align: center;
+            background: #eef3f9aa;
+            padding: 14px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: #1e4663;
+        }
+        .security-note {
+            font-size: 0.8rem;
+            color: #e67e22;
+            background: #fff3e0;
+            border-radius: 30px;
+            padding: 6px 15px;
+            display: inline-block;
+            margin-top: 8px;
+        }
+        @media print {
+            @page { size: A4; margin: 0.5cm; }
+            body { background: white; padding: 0; margin: 0; font-size: 11px; }
+            .system-container { background: white !important; padding: 0.3cm !important; box-shadow: none !important; max-width: 100%; }
+            .stats-toggle-btn, .stats-container, .subjects-toggle-btn, .subjects-stats-container,
+            .search-card, .uni-president, .heads-section, .registrar-wrapper,
+            .print-btn, .footer-note { display: none !important; }
+            .student-result { background: white !important; padding: 0 !important; margin: 0 !important; border: none !important; box-shadow: none !important; page-break-inside: avoid; break-inside: avoid; }
+            .student-header { background: #0a2f44 !important; padding: 6px 12px !important; margin-bottom: 8px !important; border-radius: 12px !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .student-name { font-size: 1.2rem !important; }
+            .student-id { font-size: 1rem !important; padding: 4px 12px !important; }
+            .grades-table { margin-bottom: 8px !important; }
+            .grades-table th { background: #1e3a5f !important; color: white !important; padding: 6px 4px !important; font-size: 0.9rem !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .grades-table td { padding: 6px 4px !important; font-size: 0.85rem !important; }
+            .grades-table tr td:first-child { font-size: 1rem !important; padding: 4px !important; }
+            .grades-table tr td:first-child span { padding: 2px 8px !important; }
+            .numeric-cell { padding: 2px 8px !important; font-size: 0.85rem !important; min-width: 60px; }
+            .score-info { font-size: 0.6rem !important; padding: 2px 4px !important; }
+            .grade-badge { padding: 3px 10px !important; font-size: 0.75rem !important; }
+            .final-summary { padding: 6px !important; margin: 6px 0 !important; gap: 8px; }
+            .summary-item { padding: 6px 12px !important; min-width: 110px !important; }
+            .summary-item .label { font-size: 0.7rem !important; }
+            .summary-item .value { font-size: 1.1rem !important; }
+            .grade-value { padding: 4px 12px !important; }
+            .signatures { margin-top: 8px !important; padding-top: 8px !important; gap: 20px; page-break-inside: avoid; break-inside: avoid; }
+            .signature-item { min-width: 150px; }
+            .signature-title { font-size: 0.75rem !important; margin-bottom: 4px; }
+            .signature-name { font-size: 0.85rem !important; }
+            .program-badge { font-size: 0.8rem !important; padding: 4px 12px !important; margin-bottom: 6px !important; }
+            .uni-faculty-container { padding: 6px 15px !important; margin-bottom: 6px !important; }
+            .uni-faculty-container h1 { font-size: 1.2rem !important; }
+            .uni-faculty-container h2 { font-size: 0.9rem !important; }
+            .officials-wrapper { gap: 10px; margin-bottom: 4px; }
+            .system-designer, .dean-container, .vice-dean-container, .coordinator-container { padding: 4px 12px !important; font-size: 0.75rem !important; }
+            .system-designer .highlight { font-size: 0.85rem !important; }
+            .dean-container .dean-icon, .vice-dean-container .vd-icon, .coordinator-container .coord-icon { font-size: 1rem !important; padding: 4px; }
+            .student-header, .grades-table, .final-summary, .signatures { page-break-inside: avoid; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="system-container">
+        <div class="university-header">
+            <div class="uni-faculty-container">
+                <h1>🏛️ جامعة بنغازي</h1>
+                <h2>كلية الطب البشري</h2>
+            </div>
+            <div class="program-badge">🎓 نتيجة السنة الرابعة – الدفعة 49 – الدور الثاني 2025-2026</div>
+            <div class="uni-president">رئيس الجامعة: أ.د. عز الدين الدرسي</div>
+            <div class="officials-wrapper">
+                <div class="system-designer">إعداد وتصميم المنظومة: <span class="highlight">د. صالح الاوجلي</span><span class="title">رئيس قسم الدراسة والامتحانات</span></div>
+                <div class="dean-container"><span class="dean-icon">🏛️</span>
+                    <div>عميد الكلية: د. فتحي البركي</div>
+                </div>
+                <div class="vice-coord-wrapper">
+                    <div class="vice-dean-container"><span class="vd-icon">👩‍⚕️</span>
+                        <div>وكيل الكلية: أ.د. زاهية الغزال</div>
+                    </div>
+                    <div class="coordinator-container"><span class="coord-icon">🎓</span>
+                        <div>منسق المرحلة: د. صالحة بوحجر</div>
+                    </div>
+                </div>
+            </div>
+            <div class="heads-section">
+                <div class="head-item">
+                    <div class="dept">👶 رئيس قسم النساء والتوليد</div>
+                    <div class="name">د. نجاة بالتمر</div>
+                </div>
+                <div class="head-item">
+                    <div class="dept">🏥 رئيس قسم طب الأسرة</div>
+                    <div class="name">د. لبنى عبدالمالك</div>
+                </div>
+                <div class="head-item">
+                    <div class="dept">⚖️ رئيس قسم الطب الشرعي</div>
+                    <div class="name">د. سمير المرغني</div>
+                </div>
+                <div class="head-item">
+                    <div class="dept">👁️ رئيس قسم طب العيون</div>
+                    <div class="name">د. سليمان نشاد</div>
+                </div>
+                <div class="head-item">
+                    <div class="dept">🩻 رئيس قسم الأشعة</div>
+                    <div class="name">د. عبدالحكيم الغرياني</div>
+                </div>
+            </div>
+            <div class="registrar-wrapper">
+                <div class="registrar-container">
+                    <span class="icon">📋</span>
+                    <span>مسجل الكلية: أ. طاهر الدرسي</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- زر عرض الإحصائيات العامة -->
+        <button class="stats-toggle-btn" id="statsToggleBtn">📊 عرض الإحصائيات العامة</button>
+
+        <!-- الإحصائيات العامة -->
+        <div class="stats-container" id="statsContainer">
+            <h3 style="text-align:center; color:#0a2f44;">إحصائيات عامة – الدفعة 49 – الدور الثاني</h3>
+            <div class="stats-section-title">📌 الإحصائيات الأساسية</div>
+            <div class="stats-row" id="basicStatsRow"></div>
+            <div class="stats-section-title">📈 نسب النجاح</div>
+            <div class="success-rate-box" id="successRateBox"></div>
+            <div class="stats-section-title">✅ نتائج المتقدمين</div>
+            <div class="stats-row" id="passFailStatsRow"></div>
+            <div class="stats-section-title">🏅 توزيع التقديرات (من الحضور)</div>
+            <div class="stats-row grade-row" id="gradeStatsRow"></div>
+            <div class="charts-row">
+                <div class="chart-box"><canvas id="passFailChart"></canvas></div>
+                <div class="chart-box"><canvas id="gradesChart"></canvas></div>
+            </div>
+        </div>
+
+        <!-- زر عرض إحصائيات المواد التفصيلية -->
+        <button class="subjects-toggle-btn" id="subjectsToggleBtn">📈 عرض إحصائيات المواد التفصيلية</button>
+
+        <!-- إحصائيات المواد التفصيلية -->
+        <div class="subjects-stats-container" id="subjectsStatsContainer">
+            <div style="text-align: center;">
+                <div class="subjects-stats-title">📈 إحصائيات المواد التفصيلية</div>
+            </div>
+            <div class="subjects-grid" id="subjectsStatsGrid"></div>
+        </div>
+
+        <!-- البحث عن الطالب -->
+        <div class="search-card">
+            <input type="text" id="studentIdInput" placeholder="🔒 أدخل رقمك الدراسي الشخصي" dir="ltr">
+            <button id="searchBtn">عرض النتيجة</button>
+        </div>
+        <div style="text-align: center; margin-top: -25px; margin-bottom: 20px;">
+            <span class="security-note">⚠️ لا يمكن الاطلاع على النتيجة إلا بإدخال الرقم الصحيح الخاص بك</span>
+        </div>
+
+        <div id="resultContainer" class="student-result">
+            <div style="text-align:center; padding:50px 20px;">
+                <span style="font-size:1.8rem; font-weight:700; color: #1e3a5f;">📘 أدخل رقمك الدراسي بدقة</span><br>
+                <span style="color:#2c6e9e;">النتيجة خاصة بصاحب الرقم فقط، ولن تظهر لأي شخص آخر</span>
+            </div>
+        </div>
+        <div class="footer-note">🔹 <strong>ملاحظات هامة (الدور الثاني):</strong><br>
+            - النتيجة النهائية تعتمد على مجموع الدرجات في المواد الخمس.<br>
+            - يشترط للنجاح العام الحصول على تقدير "مقبول" فما فوق في كافة المواد.<br>
+            - يتم احتساب التقدير العام بناءً على المجموع الكلي (من أصل 800 درجة).<br>
+            - في حالة الرسوب في أي مادة (عملي أو مجموع) يتم احتساب النسبة المئوية النهائية 0%، بينما يظهر المجموع الكلي الفعلي.<br>
+            - يعتبر الطالب غائباً فقط إذا كان غائباً عن جميع المواد (المجموع الكلي = 0).<br>
+            - إحصائيات المواد التفصيلية تستخدم حالة كل مادة من عمود الحالة الخاص بها (حضور، غياب، ناجح).
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // دوال مساعدة
+        // ============================================================
+        function round2(v) {
+            return Math.round(v * 100) / 100;
+        }
+        function toFixed2(v) {
+            return round2(v).toFixed(2);
+        }
+
+        // ============================================================
+        // بيانات الطلاب – الدور الثاني (281 طالباً)
+        // تم تعديل درجات الأشعة للطلاب: 21152, 20723, 17168, 11716 إلى 60
+        // ============================================================
+        const studentsRaw = [
+            { id: "529", name: "عبدالجواد على ابريق", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "1472", name: "زينب محمد بوطلاق", obgynClin: 42, obgynTotal: 123.27, familyMed: 238.33, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "4793", name: "خالد محمد محمود علقم", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "5631", name: "طرفة نبيل حسن", obgynClin: 0, obgynTotal: 0, familyMed: 184, forensic: 60, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "6075", name: "حليمة مفتاح محمد", obgynClin: 0, obgynTotal: 0, familyMed: 198, forensic: 70, ophthClin: 0, ophthTotal: 0, radiology: 60, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "6097", name: "شورى عبدالله سالم بوجواري", obgynClin: 39.75, obgynTotal: 128.75, familyMed: 195, forensic: 60, ophthClin: 25, ophthTotal: 65.63, radiology: 68.44, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "6444", name: "صالحة حسن صالح", obgynClin: 50, obgynTotal: 120, familyMed: 180, forensic: 62, ophthClin: 0, ophthTotal: 0, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "6466", name: "حمزة سالم حسن", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "6487", name: "حنان بوبكر علي", obgynClin: 0, obgynTotal: 0, familyMed: 205, forensic: 69, ophthClin: 24, ophthTotal: 62, radiology: 0, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "6780", name: "ميلاد محمد ميلاد اصابري", obgynClin: 36, obgynTotal: 130, familyMed: 229, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 68, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "6935", name: "رشا عمر محمد الحداد", obgynClin: 36, obgynTotal: 120, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "7091", name: "هبه فوزي محمود", obgynClin: 0, obgynTotal: 53.5, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 13.75, radiology: 0, obgynStatus: "حضور", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "حضور", radiologyStatus: "غياب" },
+            { id: "7115", name: "مصطفى عبدالواحد يونس", obgynClin: 36, obgynTotal: 127, familyMed: 197, forensic: 61, ophthClin: 0, ophthTotal: 0, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "7333", name: "علاء محمد عبد الرازق", obgynClin: 0, obgynTotal: 0, familyMed: 146.67, forensic: 67, ophthClin: 0, ophthTotal: 0, radiology: 66, obgynStatus: "غياب", familyMedStatus: "حضور", forensicStatus: "حضور", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "7347", name: "نجية حسن حمد المشيطي", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "7356", name: "حسين محمد حمد مصطفي", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 68, ophthClin: 0, ophthTotal: 0, radiology: 60, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "7830", name: "منير مهدي موسى", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 65, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "8160", name: "ايمان الفيتوي خليفة", obgynClin: 0, obgynTotal: 0, familyMed: 180, forensic: 60, ophthClin: 24, ophthTotal: 60, radiology: 60, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "8192", name: "بسمة بوبكر ابراهيم", obgynClin: 37, obgynTotal: 113.75, familyMed: 208.33, forensic: 72.15, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "حضور", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "8258", name: "رجعة عبدالله امراجع النعاس", obgynClin: 0, obgynTotal: 0, familyMed: 198, forensic: 71, ophthClin: 32, ophthTotal: 62, radiology: 66, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "8311", name: "سالمين خليفة محمد", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "8374", name: "عبد الحكيم عبد القادر علي", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 60, ophthClin: 0, ophthTotal: 0, radiology: 60, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "8414", name: "عماد الدين علي بشير ابعيو", obgynClin: 36, obgynTotal: 120, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 62, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "8417", name: "عماد نصر الله عطية", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "8512", name: "محمد صالح امراجع عوض", obgynClin: 0, obgynTotal: 0, familyMed: 200, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 64, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "8565", name: "مفتاح علي محمد البركي", obgynClin: 0, obgynTotal: 0, familyMed: 189, forensic: 60, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "8616", name: "ندى فيصل شرشر", obgynClin: 36, obgynTotal: 120, familyMed: 184, forensic: 72, ophthClin: 25, ophthTotal: 60, radiology: 84.69, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "8791", name: "هدى الهادي جبريل ونيس", obgynClin: 36, obgynTotal: 120, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 61, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "8796", name: "سامية شعيب محمد الصغير", obgynClin: 0, obgynTotal: 0, familyMed: 199, forensic: 63, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "8819", name: "عبد الهادي فتحي خليل", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 26.5, ophthTotal: 69.38, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "8837", name: "منى داوود السنوسي ميكائيل", obgynClin: 36.6, obgynTotal: 123.1, familyMed: 180, forensic: 80.56, ophthClin: 32, ophthTotal: 78.13, radiology: 67.5, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "8891", name: "أسامة سالم عبد الله", obgynClin: 0, obgynTotal: 0, familyMed: 181, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "8990", name: "محمود عبد الله بن عامر", obgynClin: 0, obgynTotal: 0, familyMed: 196, forensic: 0, ophthClin: 28, ophthTotal: 60, radiology: 0, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "غياب", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "9007", name: "نجاة احمد عبدالرحمن الثني", obgynClin: 0, obgynTotal: 0, familyMed: 205, forensic: 68, ophthClin: 24, ophthTotal: 60, radiology: 60, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "9013", name: "خالد محمد سالم", obgynClin: 36, obgynTotal: 120, familyMed: 180, forensic: 60, ophthClin: 0, ophthTotal: 0, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "9363", name: "نجوى حسن عبد السلام", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "9477", name: "سعيدة محمد صالح حماد", obgynClin: 36, obgynTotal: 120, familyMed: 251, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 66, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "9494", name: "حسين حسن حسين القطراني", obgynClin: 55, obgynTotal: 120, familyMed: 180, forensic: 66, ophthClin: 0, ophthTotal: 0, radiology: 63.75, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "9958", name: "نورا عبد الواحد عطية الله", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 60, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "10490", name: "ايناس علي عبدالرحمن بن شكبان", obgynClin: 0, obgynTotal: 0, familyMed: 199, forensic: 0, ophthClin: 24, ophthTotal: 65, radiology: 64, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "غياب", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "10515", name: "سوزان حسن طاهر الفره", obgynClin: 51, obgynTotal: 122, familyMed: 193, forensic: 60.01, ophthClin: 24, ophthTotal: 60.63, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "10538", name: "فتحية محمد محمود حسين", obgynClin: 36, obgynTotal: 120, familyMed: 0, forensic: 67, ophthClin: 0, ophthTotal: 0, radiology: 60.31, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "10712", name: "سفيان محمد ابراهيم", obgynClin: 36, obgynTotal: 120, familyMed: 233, forensic: 74, ophthClin: 24, ophthTotal: 76, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "10776", name: "زيدان زيدان عبدالسلام موسى", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "11010", name: "اصاله عبدالله عبدالسلام", obgynClin: 0, obgynTotal: 0, familyMed: 196, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "11036", name: "جميلة سليمان محمد علي", obgynClin: 45, obgynTotal: 120, familyMed: 151.67, forensic: 60.35, ophthClin: 25, ophthTotal: 60, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "11062", name: "اية فوزي بوزعكوك", obgynClin: 36, obgynTotal: 156, familyMed: 209, forensic: 63, ophthClin: 24, ophthTotal: 63, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "11239", name: "هبه جمال حسين", obgynClin: 47, obgynTotal: 125.5, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 66.875, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "حضور" },
+            { id: "11291", name: "سندس محمد خليفة", obgynClin: 40, obgynTotal: 122, familyMed: 188, forensic: 68, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "11329", name: "رويدة طاهر محمد الصابر", obgynClin: 40.5, obgynTotal: 122.75, familyMed: 183.33, forensic: 73.15, ophthClin: 24, ophthTotal: 66.875, radiology: 60, obgynStatus: "حضور", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "11331", name: "سالمة عبدالقادر محمد مفتاح", obgynClin: 42, obgynTotal: 120, familyMed: 197, forensic: 60, ophthClin: 27, ophthTotal: 66, radiology: 78.75, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "11419", name: "حافظ علي مصباح", obgynClin: 38, obgynTotal: 120, familyMed: 215, forensic: 64, ophthClin: 24, ophthTotal: 61, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "11628", name: "اشرف عبدالسلام سليمان", obgynClin: 0, obgynTotal: 0, familyMed: 203, forensic: 60, ophthClin: 24, ophthTotal: 60, radiology: 64, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "11669", name: "اكرم عبدالله محمد السماط", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "11716", name: "وداد عبدالعزيز حمد", obgynClin: 0, obgynTotal: 0, familyMed: 181.67, forensic: 60, ophthClin: 21, ophthTotal: 56.875, radiology: 60, obgynStatus: "غياب", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "11729", name: "جهينة جمعة محمد العمرونى", obgynClin: 46, obgynTotal: 120, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "11761", name: "هاجر العبد عثمان", obgynClin: 39, obgynTotal: 120, familyMed: 195, forensic: 67, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "11960", name: "مريم محمد خالد", obgynClin: 36, obgynTotal: 129.4, familyMed: 180, forensic: 60.37, ophthClin: 24, ophthTotal: 65.625, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "11994", name: "ابتهال رزق الله رجب", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "12073", name: "أماني رمضان محمد", obgynClin: 35.4, obgynTotal: 104.65, familyMed: 191, forensic: 60, ophthClin: 24, ophthTotal: 60, radiology: 61.5625, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "12157", name: "حنان عمر اوحيدة", obgynClin: 0, obgynTotal: 0, familyMed: 180, forensic: 60, ophthClin: 26, ophthTotal: 62.5, radiology: 60, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "12217", name: "فايزة سالم عبد الرحمن", obgynClin: 44, obgynTotal: 126, familyMed: 0, forensic: 0, ophthClin: 24, ophthTotal: 60, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "12586", name: "دارين خالد عبدالكريم علي قرقوم", obgynClin: 36, obgynTotal: 134.35, familyMed: 202, forensic: 75.15, ophthClin: 24, ophthTotal: 66.25, radiology: 75.625, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "12589", name: "ألهام سليمان ابراهيم", obgynClin: 41, obgynTotal: 121.25, familyMed: 209, forensic: 66, ophthClin: 19, ophthTotal: 55.625, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "12602", name: "نوار فرج نور الدين محمد", obgynClin: 0, obgynTotal: 0, familyMed: 161.67, forensic: 52, ophthClin: 0, ophthTotal: 0, radiology: 65, obgynStatus: "غياب", familyMedStatus: "حضور", forensicStatus: "حضور", ophthStatus: "غياب", radiologyStatus: "حضور" },
+            { id: "12885", name: "ابراهيم فتحي محمد عمران", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "13024", name: "الاء حسين عبدالله", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "13109", name: "فاطمة مفتاح محمد ادريس", obgynClin: 53, obgynTotal: 142, familyMed: 0, forensic: 60, ophthClin: 27.5, ophthTotal: 70.5, radiology: 71.88, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "13434", name: "طارق عبدالسلام بكار الحوري", obgynClin: 0, obgynTotal: 0, familyMed: 198, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "13606", name: "عادل عوض المبروك عوض", obgynClin: 0, obgynTotal: 60, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "حضور", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "13609", name: "سحر سالم عبدالرازق عبدالحميد", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "13620", name: "عفاف على مفتاح عمر", obgynClin: 38, obgynTotal: 120, familyMed: 151.67, forensic: 62.27, ophthClin: 18.5, ophthTotal: 54.375, radiology: 60.3125, obgynStatus: "حضور", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "13631", name: "نوارة محمد بوشناف محمد", obgynClin: 37.75, obgynTotal: 142.9, familyMed: 212, forensic: 77.84, ophthClin: 28.5, ophthTotal: 75, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "13650", name: "أسماء احمد عثمان الفرجاني", obgynClin: 0, obgynTotal: 0, familyMed: 135, forensic: 0, ophthClin: 27, ophthTotal: 68.125, radiology: 0, obgynStatus: "غياب", familyMedStatus: "حضور", forensicStatus: "غياب", ophthStatus: "حضور", radiologyStatus: "غياب" },
+            { id: "13664", name: "مريم بوصفيطة محمد صالح", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "13685", name: "وردة عبدالسلام محمد التواتي", obgynClin: 24, obgynTotal: 89.75, familyMed: 180, forensic: 60.29, ophthClin: 21, ophthTotal: 53.125, radiology: 44.375, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "13691", name: "حنين رمضان العشيبي", obgynClin: 47.8, obgynTotal: 133.3, familyMed: 206.67, forensic: 68.93, ophthClin: 29, ophthTotal: 70.5, radiology: 0, obgynStatus: "حضور", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "13756", name: "سميحة ناجى محمد فضيل", obgynClin: 42, obgynTotal: 121, familyMed: 0, forensic: 60, ophthClin: 28.5, ophthTotal: 60.63, radiology: 60.94, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "13771", name: "سالمين خليفة محمود الفرجانى", obgynClin: 37, obgynTotal: 109, familyMed: 133.33, forensic: 61, ophthClin: 25, ophthTotal: 60.625, radiology: 61.56, obgynStatus: "حضور", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "13919", name: "فاطمة سالم عثمان عبدالحفيظ", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 19.375, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "حضور" },
+            { id: "13928", name: "نهي صالح عبدالله السويسي", obgynClin: 43, obgynTotal: 137.5, familyMed: 180, forensic: 60.13, ophthClin: 20, ophthTotal: 52.5, radiology: 48.75, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "13938", name: "رمزي على محمد جويده", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 61.27, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "13999", name: "منال نجيب محمد مفتاح", obgynClin: 41.5, obgynTotal: 127.75, familyMed: 192, forensic: 68.58, ophthClin: 0, ophthTotal: 0, radiology: 68.75, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "14031", name: "سميرة مخلوف خليفة الورفلي", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "14049", name: "ايمان محمد علي محمد", obgynClin: 37.5, obgynTotal: 127.75, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "حضور", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "14102", name: "غزالة محمود جمعة علي", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "14126", name: "مصطفى الحسن أحمد", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "14136", name: "فاطمة مفتاح علي محمد", obgynClin: 41, obgynTotal: 135, familyMed: 199, forensic: 63, ophthClin: 27, ophthTotal: 65, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "14168", name: "ايمان فتحي صالح", obgynClin: 51, obgynTotal: 120, familyMed: 180, forensic: 60.16, ophthClin: 26, ophthTotal: 60, radiology: 60.3125, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "14174", name: "خديجة جمال الدين صالحين", obgynClin: 36, obgynTotal: 129.25, familyMed: 164, forensic: 72.84, ophthClin: 27, ophthTotal: 60.5, radiology: 64, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "14198", name: "أحمد صلاح عبدالسيد", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "14246", name: "مريم مصطفى عبدالسلام", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 60.63, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "14265", name: "هيثم سعد مادي", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "14389", name: "صالح جبريل علي", obgynClin: 31, obgynTotal: 89, familyMed: 200, forensic: 65, ophthClin: 26, ophthTotal: 68.13, radiology: 26.5625, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "14403", name: "يحي عبداللطيف عبدالجواد", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "14407", name: "عبير مرعي عبدالسلام", obgynClin: 0, obgynTotal: 0, familyMed: 181, forensic: 72.5, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "14519", name: "فاطمة الزهراء عبدالحميد عبدالجليل", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "14549", name: "محمد احمد بلعيد", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "14563", name: "عيسي محمد عيسي", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "14687", name: "شيماء سالم نصر", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "14703", name: "أحمد عبدالله عبدالرازق", obgynClin: 38.25, obgynTotal: 130.6, familyMed: 201.5, forensic: 77.29, ophthClin: 24, ophthTotal: 66.5, radiology: 86.25, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "14713", name: "سالمة يوسف بوبكر عبدالرحيم", obgynClin: 36, obgynTotal: 126.85, familyMed: 182, forensic: 64.29, ophthClin: 25, ophthTotal: 61.875, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "14768", name: "امل حسين محمد", obgynClin: 0, obgynTotal: 0, familyMed: 204, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "14894", name: "نور الايمان عبدالله سالم", obgynClin: 49.8, obgynTotal: 136.24, familyMed: 0, forensic: 63.29, ophthClin: 24, ophthTotal: 71.875, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "غياب" },
+            { id: "15087", name: "محمد حمزة محمد الدلال", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "15117", name: "فيصل فتحي محمد", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 70, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "15118", name: "حسين محمد قطيش اللواطي", obgynClin: 33, obgynTotal: 85.25, familyMed: 110, forensic: 29, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "حضور", familyMedStatus: "حضور", forensicStatus: "حضور", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "15124", name: "منذر نجيب مفتاح المشيطي", obgynClin: 44.1, obgynTotal: 141.62, familyMed: 194.17, forensic: 69, ophthClin: 24, ophthTotal: 67.5, radiology: 74.38, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "15137", name: "صالح عمر صالح عمر", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 76, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "15147", name: "أيمن محمود محمود الأشقر", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 61, ophthClin: 0, ophthTotal: 0, radiology: 61.75, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "15230", name: "يوسف محمود علي المدني", obgynClin: 36, obgynTotal: 120, familyMed: 182, forensic: 66.77, ophthClin: 0, ophthTotal: 0, radiology: 61, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "15236", name: "قصي موسى علي محمد", obgynClin: 41, obgynTotal: 120, familyMed: 191.3, forensic: 68, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "15255", name: "خالد محمد عبدالحميد عوض", obgynClin: 37.25, obgynTotal: 132.4, familyMed: 180, forensic: 73.15, ophthClin: 24, ophthTotal: 61.5, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "15278", name: "محمود صالح عوض عبدالله", obgynClin: 0, obgynTotal: 0, familyMed: 192, forensic: 60, ophthClin: 0, ophthTotal: 0, radiology: 85, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "15299", name: "نورالهدى ضوء محمد الاسود", obgynClin: 40, obgynTotal: 138.6, familyMed: 198, forensic: 80.57, ophthClin: 33, ophthTotal: 76.25, radiology: 65.5, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "15301", name: "هيام محمد عبدالرازق محمد", obgynClin: 42.6, obgynTotal: 124.86, familyMed: 196.67, forensic: 66, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "15306", name: "ندى فرج عبدالحميد محمد", obgynClin: 42.8, obgynTotal: 126.05, familyMed: 205, forensic: 82.7, ophthClin: 22, ophthTotal: 57.5, radiology: 60, obgynStatus: "حضور", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "15313", name: "سعد عبدالمنعم عبد الحليم", obgynClin: 39, obgynTotal: 129, familyMed: 198.33, forensic: 70, ophthClin: 25, ophthTotal: 65, radiology: 63.44, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "15314", name: "معتزبالله محمد عبدالله المحجوب", obgynClin: 41.75, obgynTotal: 127.2, familyMed: 110, forensic: 60, ophthClin: 28, ophthTotal: 63.125, radiology: 62.75, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "15322", name: "محمد عبدالماجد عطية", obgynClin: 36, obgynTotal: 120, familyMed: 186, forensic: 60, ophthClin: 24, ophthTotal: 61.88, radiology: 48.125, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "15330", name: "إسراء عاشور السنوسي محمد", obgynClin: 42.5, obgynTotal: 166.15, familyMed: 0, forensic: 0, ophthClin: 34, ophthTotal: 88.5, radiology: 94.0625, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "15376", name: "فدوى عزالدين محمد بالأعمي", obgynClin: 50, obgynTotal: 126.55, familyMed: 0, forensic: 71.15, ophthClin: 28, ophthTotal: 68.5, radiology: 65, obgynStatus: "حضور", familyMedStatus: "غياب", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "15384", name: "أمينا محمد إمراجع ذاوود", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "15419", name: "فاطمة صبحي عبدالحفيظ", obgynClin: 36, obgynTotal: 121.1, familyMed: 183, forensic: 62.72, ophthClin: 31, ophthTotal: 77.5, radiology: 69.375, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "15444", name: "علي يوسف علي المرابط", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "15474", name: "اهداء محمد بوبكر جدولة", obgynClin: 38.25, obgynTotal: 137.88, familyMed: 0, forensic: 72.86, ophthClin: 24, ophthTotal: 64, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "15510", name: "إبتسام محمد محمود علي", obgynClin: 44, obgynTotal: 120, familyMed: 183.5, forensic: 61, ophthClin: 25, ophthTotal: 62.5, radiology: 69.375, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "15521", name: "سارة مروان حماد سليمان", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "15541", name: "نور الاسلام عمران المجبري", obgynClin: 41.5, obgynTotal: 137, familyMed: 203, forensic: 68.08, ophthClin: 34, ophthTotal: 85, radiology: 69.375, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "15565", name: "اميمة جمعه علي العماري", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "15576", name: "يوسف سعد يوسف عبدالرحيم", obgynClin: 44.85, obgynTotal: 132.19, familyMed: 210, forensic: 62, ophthClin: 16, ophthTotal: 61.25, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "15588", name: "نجاح حسين عبدالحميد عثمان", obgynClin: 43, obgynTotal: 120, familyMed: 202, forensic: 62.06, ophthClin: 33, ophthTotal: 82.5, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "15594", name: "سالم عبدالسلام علي المقروس", obgynClin: 46.2, obgynTotal: 131.95, familyMed: 118.33, forensic: 65, ophthClin: 24, ophthTotal: 60, radiology: 60.3125, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "15620", name: "سفيان مفتاح سالم الفيتوري", obgynClin: 37.5, obgynTotal: 98.25, familyMed: 180.83, forensic: 66.5, ophthClin: 0, ophthTotal: 0, radiology: 48.4375, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "حضور" },
+            { id: "15669", name: "علاء الدين مفتاح أحمد محمد", obgynClin: 36, obgynTotal: 136.15, familyMed: 218, forensic: 79.43, ophthClin: 28, ophthTotal: 69.5, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "15694", name: "إنصاف عبدالستارعبدالله محمد", obgynClin: 36, obgynTotal: 127.63, familyMed: 180, forensic: 71.27, ophthClin: 0, ophthTotal: 0, radiology: 61.25, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "15737", name: "حنين فهمي محمود بشة", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "15741", name: "عائشة محمد الوافي السني", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 29.375, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "حضور", radiologyStatus: "غياب" },
+            { id: "15771", name: "شهد رمضان الساعدي الشكري", obgynClin: 43, obgynTotal: 141.95, familyMed: 199, forensic: 70.15, ophthClin: 24, ophthTotal: 65.625, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "15804", name: "محمد نصر مفتاح عبدالله", obgynClin: 44.5, obgynTotal: 131.76, familyMed: 197, forensic: 60.5, ophthClin: 33, ophthTotal: 75, radiology: 47.1875, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "15832", name: "محمد عثمان محمد الفيتوري", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "15835", name: "منية أحمد موسى الفلاح", obgynClin: 41.8, obgynTotal: 126.55, familyMed: 197, forensic: 65, ophthClin: 38, ophthTotal: 90, radiology: 60, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "15842", name: "خديجة جمعة سعيد عثمان", obgynClin: 36, obgynTotal: 125.3, familyMed: 195.5, forensic: 60, ophthClin: 0, ophthTotal: 21.25, radiology: 63.44, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "15862", name: "عبدالحميد محمد عبدالجواد سالم", obgynClin: 0, obgynTotal: 0, familyMed: 180, forensic: 60, ophthClin: 33.5, ophthTotal: 81.875, radiology: 0, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "غياب" },
+            { id: "15868", name: "هالة فتحي صالح محمد إكويري", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "15960", name: "عبدالسلام ميمون مختار", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "16018", name: "منير مصباح خليل الجوهري", obgynClin: 49.8, obgynTotal: 123.55, familyMed: 186.5, forensic: 60, ophthClin: 29, ophthTotal: 83.125, radiology: 80, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "16038", name: "احمد عطية بوحليقة ميلاد", obgynClin: 39.75, obgynTotal: 122.75, familyMed: 0, forensic: 65.55, ophthClin: 26, ophthTotal: 60, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "16054", name: "محمد عبدالقادر محمد عبدالقادر", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "16063", name: "محمد حسين عبد القادر", obgynClin: 36, obgynTotal: 120, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "16081", name: "إبراهيم مراد إبراهيم بوزريبة", obgynClin: 36, obgynTotal: 126.1, familyMed: 192, forensic: 72, ophthClin: 33, ophthTotal: 81.25, radiology: 63.125, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "16089", name: "أمين عزالدين محمد النواع", obgynClin: 36, obgynTotal: 127.55, familyMed: 182, forensic: 79.15, ophthClin: 21, ophthTotal: 51.875, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "16100", name: "شريف أحمد كامل عبدالقوي", obgynClin: 51, obgynTotal: 145.5, familyMed: 121.67, forensic: 61, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "16112", name: "شهد قاسم خليفة البركي", obgynClin: 43.8, obgynTotal: 120.3, familyMed: 111.67, forensic: 73.65, ophthClin: 30, ophthTotal: 66.88, radiology: 62.5, obgynStatus: "حضور", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "16154", name: "سعيد مصطفى سعيد الكيلاني", obgynClin: 36, obgynTotal: 125, familyMed: 181.67, forensic: 78.91, ophthClin: 26, ophthTotal: 68.13, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "16160", name: "قيس عبدالناصر مسعود النقاز", obgynClin: 45.3, obgynTotal: 129.3, familyMed: 180, forensic: 67.5, ophthClin: 26, ophthTotal: 72.5, radiology: 64.0625, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "16163", name: "فاطمة محمد السيد", obgynClin: 44, obgynTotal: 139, familyMed: 70, forensic: 66, ophthClin: 36, ophthTotal: 87.5, radiology: 67.5, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "16168", name: "محمد وائل إسماعيل حسن عبيد", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "16209", name: "غفران بشير سليمان علي", obgynClin: 46.5, obgynTotal: 122.5, familyMed: 183.33, forensic: 67.01, ophthClin: 29, ophthTotal: 73.75, radiology: 0, obgynStatus: "حضور", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "غياب" },
+            { id: "16221", name: "نادر محمد سالم الغماري", obgynClin: 46.3, obgynTotal: 128.55, familyMed: 185.5, forensic: 64, ophthClin: 32, ophthTotal: 81.875, radiology: 65, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "16240", name: "محمد جمال عطالله عبدالرحمن", obgynClin: 0, obgynTotal: 0, familyMed: 211, forensic: 60.42, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "16247", name: "هند ناجي عمر صالح البابا", obgynClin: 39, obgynTotal: 120, familyMed: 183, forensic: 81.58, ophthClin: 31, ophthTotal: 60.5, radiology: 76.5625, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "16258", name: "إبتسام منصور صالح لسيود", obgynClin: 44, obgynTotal: 120, familyMed: 195.5, forensic: 51, ophthClin: 29, ophthTotal: 78, radiology: 61.25, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "حضور", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "16358", name: "مسعودة جلال ناجي بالطيب", obgynClin: 36, obgynTotal: 130.9, familyMed: 101.67, forensic: 66.22, ophthClin: 16, ophthTotal: 53.75, radiology: 66.25, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "16371", name: "نورا سالم منازع مبروك", obgynClin: 0, obgynTotal: 0, familyMed: 213, forensic: 35, ophthClin: 20, ophthTotal: 57.5, radiology: 0, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "حضور", ophthStatus: "حضور", radiologyStatus: "غياب" },
+            { id: "16375", name: "لجين محمد أحمد الفرجاني", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "16413", name: "بسمة أشرف يوسف عبدالله", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "16451", name: "حاتم نوري نوح الدرسي", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "16468", name: "هبة الرحمن رضاء التمامي", obgynClin: 39.75, obgynTotal: 123.35, familyMed: 180.5, forensic: 75, ophthClin: 26, ophthTotal: 68.125, radiology: 68.75, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "16544", name: "نور خالد عبدالكريم الفقي", obgynClin: 39.8, obgynTotal: 108.05, familyMed: 189.3, forensic: 62.29, ophthClin: 24, ophthTotal: 65.63, radiology: 68.75, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "16554", name: "إلهام مفتاح محمد المبروك", obgynClin: 40.8, obgynTotal: 122.41, familyMed: 194.5, forensic: 60, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "حضور", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "16569", name: "إيناس عبدالحميد مختار عبدالحميد", obgynClin: 40.8, obgynTotal: 124.06, familyMed: 0, forensic: 22, ophthClin: 0, ophthTotal: 0, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "حضور", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "16677", name: "آلاء جمعة محمد شبيك", obgynClin: 37.63, obgynTotal: 146.13, familyMed: 184, forensic: 79.43, ophthClin: 0, ophthTotal: 0, radiology: 69.25, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "16691", name: "حليمة موسى لزم داوود", obgynClin: 40.75, obgynTotal: 153.35, familyMed: 213, forensic: 78.43, ophthClin: 31, ophthTotal: 78.75, radiology: 69, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "16695", name: "أميرة محمد سباق سليمان", obgynClin: 42.75, obgynTotal: 147.3, familyMed: 241.67, forensic: 80.43, ophthClin: 31, ophthTotal: 75.5, radiology: 70.5, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "16744", name: "مبروكة جابر طاهر", obgynClin: 40.75, obgynTotal: 148.45, familyMed: 205, forensic: 73.58, ophthClin: 27, ophthTotal: 71.875, radiology: 60.75, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "16766", name: "خديجة صالح عبدالحميد رحيل", obgynClin: 45.75, obgynTotal: 158.55, familyMed: 217, forensic: 71, ophthClin: 0, ophthTotal: 0, radiology: 67.75, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "16774", name: "سارة عبدالرازق سليمان عبدالله", obgynClin: 36, obgynTotal: 120.4, familyMed: 148.33, forensic: 68.56, ophthClin: 24, ophthTotal: 60.625, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "غياب" },
+            { id: "16835", name: "زينب نصر نصار", obgynClin: 36, obgynTotal: 120, familyMed: 201, forensic: 68, ophthClin: 24, ophthTotal: 63, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "16926", name: "بن زايد محمد عبدالحفيظ علي", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "16957", name: "اخلاص عبدالله علي فتاح", obgynClin: 53, obgynTotal: 135, familyMed: 181, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 68, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "17003", name: "فرج محمد فرج محمد", obgynClin: 37.25, obgynTotal: 136.75, familyMed: 214, forensic: 70.99, ophthClin: 32, ophthTotal: 69.5, radiology: 77.8125, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "17051", name: "فاطمة صلاح محمد المغربي", obgynClin: 0, obgynTotal: 0, familyMed: 194, forensic: 69.86, ophthClin: 0, ophthTotal: 16.25, radiology: 60, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "17087", name: "فارس عبدالسلام أحمد السبيعي", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "17108", name: "نائفه  فاروق علي حسين", obgynClin: 38.75, obgynTotal: 146.4, familyMed: 180, forensic: 70.86, ophthClin: 30, ophthTotal: 64.5, radiology: 67.5, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "17165", name: "محمد الناجي شعيب عبدالونيس", obgynClin: 41, obgynTotal: 135, familyMed: 219, forensic: 60.44, ophthClin: 24, ophthTotal: 63.75, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "17168", name: "وصال علي عبدالقادر البرعصي", obgynClin: 40.8, obgynTotal: 104.3, familyMed: 180, forensic: 62.29, ophthClin: 19, ophthTotal: 54.375, radiology: 60, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "17189", name: "سالمة عمران عمر عثمان", obgynClin: 36, obgynTotal: 135.3, familyMed: 198.5, forensic: 70, ophthClin: 29, ophthTotal: 71.5, radiology: 61.625, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "17207", name: "إسماعيل إبراهيم الكيلاني آدم", obgynClin: 45, obgynTotal: 120, familyMed: 182, forensic: 60, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "17250", name: "آلاء إبراهيم بشيرالسعداوي", obgynClin: 37.25, obgynTotal: 128.85, familyMed: 202, forensic: 72.79, ophthClin: 30, ophthTotal: 61.5, radiology: 65.625, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "17276", name: "حواء حمد عطية", obgynClin: 40, obgynTotal: 135.2, familyMed: 181.67, forensic: 64.45, ophthClin: 29, ophthTotal: 61.5, radiology: 65.625, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "17278", name: "ياسمينة سالم محمد بوشيحة", obgynClin: 50, obgynTotal: 169, familyMed: 256, forensic: 86.15, ophthClin: 26, ophthTotal: 76.875, radiology: 67.25, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "17299", name: "الزهراء سالم علي اللواج", obgynClin: 36, obgynTotal: 120.15, familyMed: 198.15, forensic: 60, ophthClin: 25, ophthTotal: 69.375, radiology: 61.88, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "17354", name: "طلال أحمد عبدالسلام صديق", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "17358", name: "عصام عبدالله علي عبدالله", obgynClin: 42.8, obgynTotal: 131.05, familyMed: 182.5, forensic: 66, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "17374", name: "عبير حمد سعد كويلة", obgynClin: 40.5, obgynTotal: 124.65, familyMed: 221.67, forensic: 64.86, ophthClin: 29, ophthTotal: 76.25, radiology: 80.3125, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "17413", name: "منار جمال مفتاح", obgynClin: 36, obgynTotal: 143, familyMed: 235.5, forensic: 64, ophthClin: 12, ophthTotal: 58.125, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "17437", name: "خديجة فرج بلل عبدالسلام", obgynClin: 43, obgynTotal: 146.2, familyMed: 213, forensic: 67.5, ophthClin: 20, ophthTotal: 61.875, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "17491", name: "سلسبيل مصطفى عمران السليني", obgynClin: 44.5, obgynTotal: 155.75, familyMed: 236, forensic: 73.65, ophthClin: 24, ophthTotal: 63.75, radiology: 75.25, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "17499", name: "ولاء محمد جمعة محمد", obgynClin: 36, obgynTotal: 128.6, familyMed: 221, forensic: 60, ophthClin: 24, ophthTotal: 60.625, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "17515", name: "اسامة علي سعد عبدالرازق", obgynClin: 42, obgynTotal: 129.9, familyMed: 123.33, forensic: 45, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "حضور", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "17536", name: "عبدالرحمن وائل محمد موسى", obgynClin: 48.3, obgynTotal: 164.05, familyMed: 198.33, forensic: 89, ophthClin: 29, ophthTotal: 78.75, radiology: 77.5, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "17544", name: "رتاج إبراهيم سالم الطرابلسي", obgynClin: 38.5, obgynTotal: 144.3, familyMed: 217.5, forensic: 65.5, ophthClin: 24, ophthTotal: 74.375, radiology: 66.75, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "17587", name: "كريم أشرف عبدالكريم بوخطوة", obgynClin: 0, obgynTotal: 26, familyMed: 180.83, forensic: 61.44, ophthClin: 0, ophthTotal: 17.5, radiology: 29.6875, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "17625", name: "حسن محمد سالم ابوكليش", obgynClin: 51, obgynTotal: 164, familyMed: 225, forensic: 76, ophthClin: 24, ophthTotal: 60.63, radiology: 82.1875, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18020", name: "خديجة عادل حسن المنفي", obgynClin: 37.5, obgynTotal: 134.25, familyMed: 195, forensic: 62.99, ophthClin: 24, ophthTotal: 60.625, radiology: 61.5625, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "18038", name: "أريج عبدالوهاب صالح عبدالسلام", obgynClin: 20.3, obgynTotal: 63.55, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 11.875, radiology: 0, obgynStatus: "حضور", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "حضور", radiologyStatus: "غياب" },
+            { id: "18054", name: "سلوى إبراهيم حسن محمد", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "18057", name: "نورعبدالسلام محمد المطماطى", obgynClin: 36.75, obgynTotal: 136.5, familyMed: 231, forensic: 78.72, ophthClin: 24, ophthTotal: 62, radiology: 65.3125, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18074", name: "علي سعد علي سالم المعدانى", obgynClin: 36, obgynTotal: 122.5, familyMed: 171.67, forensic: 60, ophthClin: 27, ophthTotal: 64.5, radiology: 69.0625, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18078", name: "حاتم كمال ميلاد عبدالسلام", obgynClin: 44.5, obgynTotal: 141.9, familyMed: 181, forensic: 73.01, ophthClin: 25, ophthTotal: 60, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "18089", name: "محمد عبدالوهاب صالح عبدالسلام", obgynClin: 39.5, obgynTotal: 127.75, familyMed: 180, forensic: 68, ophthClin: 21, ophthTotal: 56.25, radiology: 60.625, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "18125", name: "سندس محمد بالقاسم عبدالسيد", obgynClin: 36, obgynTotal: 145.18, familyMed: 197, forensic: 70, ophthClin: 29, ophthTotal: 68.5, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "حضور", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "18167", name: "سهيل عبدالناصر مسعود النقاز", obgynClin: 47.3, obgynTotal: 141.05, familyMed: 191.67, forensic: 74, ophthClin: 24.5, ophthTotal: 61.25, radiology: 62.8125, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18174", name: "أماني إدريس مفتاح المصراتي", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "18177", name: "سلوى عطية الله سعد العبيدي", obgynClin: 43.5, obgynTotal: 150.65, familyMed: 207, forensic: 64, ophthClin: 29, ophthTotal: 70.5, radiology: 63.25, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "حضور", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "18178", name: "نورالهدى عزالدين مصباح النجار", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "18188", name: "عبدالحميد محمد إدريس موسى", obgynClin: 42, obgynTotal: 130.95, familyMed: 151.67, forensic: 73.34, ophthClin: 34, ophthTotal: 72, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "18224", name: "فيروز حمدي خليل قليصة", obgynClin: 36, obgynTotal: 140.95, familyMed: 228, forensic: 68.84, ophthClin: 29, ophthTotal: 69.5, radiology: 73.4375, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18280", name: "هبة الله جمال محمد عبدالكريم", obgynClin: 41.5, obgynTotal: 111, familyMed: 200, forensic: 63.15, ophthClin: 24, ophthTotal: 61.25, radiology: 60, obgynStatus: "حضور", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "18287", name: "إسراء عبدالحميد محمد بوقرين", obgynClin: 38.25, obgynTotal: 154.45, familyMed: 194, forensic: 69.7, ophthClin: 24, ophthTotal: 62, radiology: 80.3125, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18294", name: "فرج صلاح فرج محمد العبيدي", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "18298", name: "عبدالحميد محمد السنوسى الطويل", obgynClin: 41, obgynTotal: 143.25, familyMed: 180, forensic: 72.5, ophthClin: 24, ophthTotal: 68.5, radiology: 65.625, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18350", name: "جيهان منصف مسعود محمد", obgynClin: 49.8, obgynTotal: 143.06, familyMed: 205, forensic: 68, ophthClin: 24, ophthTotal: 63.125, radiology: 82.1875, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "18427", name: "آية محمد جبريل محمد درباش", obgynClin: 0, obgynTotal: 0, familyMed: 196.5, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "ناجح", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "18435", name: "رقية أحمد بلعيد أبوزيد", obgynClin: 36, obgynTotal: 124.49, familyMed: 199.5, forensic: 73, ophthClin: 32, ophthTotal: 76, radiology: 75.625, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "حضور", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18460", name: "ليلى عاطف عوض عقيلة", obgynClin: 36.25, obgynTotal: 126.58, familyMed: 205.5, forensic: 55, ophthClin: 27, ophthTotal: 69.38, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "حضور", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "18470", name: "عفاف الصابر سليمان موسى", obgynClin: 36.25, obgynTotal: 136.8, familyMed: 180, forensic: 67.7, ophthClin: 26, ophthTotal: 69.375, radiology: 71.875, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "18485", name: "أسماء السنوسي السيد الصاوي", obgynClin: 48, obgynTotal: 136.25, familyMed: 207, forensic: 72.86, ophthClin: 35, ophthTotal: 83, radiology: 60.3125, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18497", name: "حنين سالم عبدالله خليل", obgynClin: 40.5, obgynTotal: 151.25, familyMed: 180, forensic: 82.15, ophthClin: 37, ophthTotal: 91, radiology: 63.75, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18551", name: "نزار نبيل سليمان بعيو", obgynClin: 36, obgynTotal: 126, familyMed: 180, forensic: 87.86, ophthClin: 27, ophthTotal: 63, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "18587", name: "جبريل محمد علي الدرسي", obgynClin: 50, obgynTotal: 147.75, familyMed: 196, forensic: 65.44, ophthClin: 36, ophthTotal: 78, radiology: 0, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "18591", name: "عبدالله سعد فرج حمد", obgynClin: 36, obgynTotal: 126.9, familyMed: 206, forensic: 67, ophthClin: 18, ophthTotal: 54.375, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "حضور", ophthStatus: "حضور", radiologyStatus: "غياب" },
+            { id: "18618", name: "فرح محمد مفتاح المبروك", obgynClin: 41.3, obgynTotal: 131.55, familyMed: 182, forensic: 60, ophthClin: 30, ophthTotal: 62.5, radiology: 65.9375, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18635", name: "فيصل مفتاح إمراجع علي", obgynClin: 0, obgynTotal: 0, familyMed: 185, forensic: 72, ophthClin: 24, ophthTotal: 72.5, radiology: 0, obgynStatus: "غياب", familyMedStatus: "حضور", forensicStatus: "حضور", ophthStatus: "حضور", radiologyStatus: "غياب" },
+            { id: "18663", name: "أحمد منصور محمد الاعوج", obgynClin: 42.5, obgynTotal: 120.5, familyMed: 180, forensic: 73.15, ophthClin: 30, ophthTotal: 73.5, radiology: 60.625, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18665", name: "محمد أحمد محمد عبدالحميد", obgynClin: 39.25, obgynTotal: 135.66, familyMed: 222.7, forensic: 65, ophthClin: 30, ophthTotal: 72, radiology: 70.3125, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18680", name: "هديل مصطفى عبد الرازق محمد", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "18690", name: "هديل سالم حمد محمد المبروك", obgynClin: 38.75, obgynTotal: 137.65, familyMed: 180, forensic: 70.43, ophthClin: 29, ophthTotal: 65.5, radiology: 75.625, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18753", name: "أحمد مفتاح عبد الله محمد", obgynClin: 40, obgynTotal: 120, familyMed: 185, forensic: 69.43, ophthClin: 24, ophthTotal: 60.5, radiology: 77.5, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18764", name: "سلسبيل صالح جويدة علي", obgynClin: 38.25, obgynTotal: 124.4, familyMed: 200, forensic: 69.01, ophthClin: 31, ophthTotal: 68, radiology: 60, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "18766", name: "الحسن الخطاب عاطف الزبير", obgynClin: 36, obgynTotal: 132.6, familyMed: 205, forensic: 73.72, ophthClin: 36, ophthTotal: 75.5, radiology: 70.625, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "18769", name: "نورا نوري صالح العبدلي", obgynClin: 36.75, obgynTotal: 125.95, familyMed: 190, forensic: 73.29, ophthClin: 24, ophthTotal: 65.5, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "18874", name: "آلاء عبدالناصر حسن الصليل", obgynClin: 0, obgynTotal: 26, familyMed: 68.33, forensic: 27, ophthClin: 13, ophthTotal: 41.875, radiology: 37.5, obgynStatus: "حضور", familyMedStatus: "حضور", forensicStatus: "حضور", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "18904", name: "أشرف جمال حسن فرغالي", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "18919", name: "آية محمد عقيلة بن إسماعيل", obgynClin: 44.5, obgynTotal: 138.75, familyMed: 213.5, forensic: 76.7, ophthClin: 24.5, ophthTotal: 61.88, radiology: 70.25, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "18935", name: "محمد قناوي أحمد جاد", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 60, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "ناجح" },
+            { id: "18948", name: "ملاك جمال علي محمد", obgynClin: 38.5, obgynTotal: 145.65, familyMed: 196.67, forensic: 73.51, ophthClin: 31, ophthTotal: 75, radiology: 60.25, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "18990", name: "مبروكة حمد عبدالرحيم", obgynClin: 36, obgynTotal: 121.8, familyMed: 180, forensic: 73.29, ophthClin: 14.5, ophthTotal: 52.5, radiology: 65.9375, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "19003", name: "هديل محمد محمد مفتاح", obgynClin: 38.5, obgynTotal: 131.65, familyMed: 180, forensic: 74.08, ophthClin: 24, ophthTotal: 60, radiology: 67.1875, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "19039", name: "هاجر اسامة عبدالحميد اشليمبو", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "19079", name: "هاجر عبدالحميد عبدالله الصادق", obgynClin: 43.5, obgynTotal: 125.5, familyMed: 185, forensic: 62, ophthClin: 28, ophthTotal: 68.75, radiology: 67.1875, obgynStatus: "حضور", familyMedStatus: "حضور", forensicStatus: "حضور", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "19108", name: "عائشه ناصر مفتاح بسيكري", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "19120", name: "عبد المهيمن ابوبكر ابراهيم الزلاوي", obgynClin: 36, obgynTotal: 142.6, familyMed: 158.33, forensic: 64.99, ophthClin: 24, ophthTotal: 60, radiology: 60.25, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "19122", name: "ساره ابراهيم البشير صالح", obgynClin: 40, obgynTotal: 149.3, familyMed: 204, forensic: 77.56, ophthClin: 26, ophthTotal: 73.5, radiology: 86.5625, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "19141", name: "رفيق مروان سعد المنصوري", obgynClin: 36, obgynTotal: 144.8, familyMed: 248, forensic: 87.79, ophthClin: 29, ophthTotal: 74.5, radiology: 86.5625, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "19171", name: "ايمان فتح الله محمد طاهر عبدالسلام", obgynClin: 40.5, obgynTotal: 134.7, familyMed: 220, forensic: 74, ophthClin: 26, ophthTotal: 73.125, radiology: 72.5, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "حضور", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "19192", name: "روان عبدالباسط حامد شعيب", obgynClin: 39.75, obgynTotal: 141.45, familyMed: 207, forensic: 68.22, ophthClin: 30, ophthTotal: 72.5, radiology: 75.625, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "19207", name: "عبدالغني هويدي عبدالغني محمد", obgynClin: 44, obgynTotal: 151.7, familyMed: 0, forensic: 75.79, ophthClin: 33, ophthTotal: 78.5, radiology: 60.5, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "19245", name: "فاطمة محمود علي محمد بن قنونو", obgynClin: 36.5, obgynTotal: 137.05, familyMed: 206.67, forensic: 74.93, ophthClin: 24, ophthTotal: 62.5, radiology: 78.25, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "19345", name: "وردة جمعه طاهر ابراهيم", obgynClin: 38.5, obgynTotal: 136.6, familyMed: 183.33, forensic: 72.65, ophthClin: 26, ophthTotal: 69.5, radiology: 80.625, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "19349", name: "هدى سعيد محمد الرناوي", obgynClin: 36, obgynTotal: 127.65, familyMed: 188, forensic: 81.29, ophthClin: 26, ophthTotal: 73.5, radiology: 89.375, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "19419", name: "حنين شعبان صالح زوبي", obgynClin: 40.8, obgynTotal: 123.05, familyMed: 0, forensic: 62, ophthClin: 24, ophthTotal: 60, radiology: 0, obgynStatus: "حضور", familyMedStatus: "غياب", forensicStatus: "حضور", ophthStatus: "حضور", radiologyStatus: "غياب" },
+            { id: "19511", name: "ريهام عبدالباسط ابراهيم محمد", obgynClin: 39.75, obgynTotal: 147.3, familyMed: 0, forensic: 28, ophthClin: 0, ophthTotal: 20.625, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "حضور", ophthStatus: "حضور", radiologyStatus: "غياب" },
+            { id: "19545", name: "دعاء طلال احمد الطواحني", obgynClin: 36.25, obgynTotal: 143.25, familyMed: 201, forensic: 71.72, ophthClin: 27, ophthTotal: 71, radiology: 81.5625, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "19546", name: "ملاك سالم جمعه حسين", obgynClin: 36, obgynTotal: 140.5, familyMed: 202, forensic: 80.36, ophthClin: 25, ophthTotal: 66, radiology: 70.3125, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "19593", name: "نوران عبدالله محمد عبدالنبي", obgynClin: 43.75, obgynTotal: 158.45, familyMed: 224, forensic: 74.79, ophthClin: 28, ophthTotal: 80, radiology: 76.75, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "ناجح" },
+            { id: "19647", name: "قشقش عبدالله قشقش قشقش", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "19685", name: "رتاج عبدالحليم فرج رجب", obgynClin: 43, obgynTotal: 160.95, familyMed: 223, forensic: 73.79, ophthClin: 27, ophthTotal: 71.5, radiology: 73.75, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "20647", name: "عبدالرحمن محمد عبدالكريم مؤمن", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "20656", name: "حواء ادريس يوسف العبيدي", obgynClin: 44, obgynTotal: 143.4, familyMed: 198.33, forensic: 65.63, ophthClin: 29, ophthTotal: 66.5, radiology: 65.75, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "20659", name: "مروة عطية ابراهيم حبانة", obgynClin: 37.75, obgynTotal: 126.7, familyMed: 143.33, forensic: 66.72, ophthClin: 28, ophthTotal: 73.75, radiology: 72.1875, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "20661", name: "نجوي يونس علي ميلاد", obgynClin: 36, obgynTotal: 142.58, familyMed: 180, forensic: 60.7, ophthClin: 29, ophthTotal: 64.5, radiology: 75.9375, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "حضور" },
+            { id: "20665", name: "هند حمد عبدالنبي محمد", obgynClin: 42.25, obgynTotal: 135.45, familyMed: 188.33, forensic: 50, ophthClin: 15, ophthTotal: 52.5, radiology: 61.875, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "حضور", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "20723", name: "هناء إبراهيم سعد امعزب", obgynClin: 43.5, obgynTotal: 134.75, familyMed: 180, forensic: 72, ophthClin: 26, ophthTotal: 63.13, radiology: 60, obgynStatus: "حضور", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "20731", name: "فاطمة عبدالقوي عبدالعزيز بدر", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "21127", name: "اسراء عبدالباسط حمد محمد", obgynClin: 46.25, obgynTotal: 148.25, familyMed: 181.67, forensic: 63.86, ophthClin: 29, ophthTotal: 66.5, radiology: 65, obgynStatus: "ناجح", familyMedStatus: "حضور", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "ناجح" },
+            { id: "21130", name: "هلال حسام الدين القرقاني", obgynClin: 0, obgynTotal: 0, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "غياب", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" },
+            { id: "21152", name: "عائشة أنور إبراهيم", obgynClin: 41, obgynTotal: 138.8, familyMed: 135, forensic: 60, ophthClin: 28, ophthTotal: 62.5, radiology: 60, obgynStatus: "حضور", familyMedStatus: "حضور", forensicStatus: "حضور", ophthStatus: "حضور", radiologyStatus: "حضور" },
+            { id: "1516838", name: "محمد علي محمد فرج", obgynClin: 43, obgynTotal: 139, familyMed: 180, forensic: 69, ophthClin: 24, ophthTotal: 62.5, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "ناجح", forensicStatus: "ناجح", ophthStatus: "ناجح", radiologyStatus: "غياب" },
+            { id: "4140152", name: "زهرة محمد محمدعلي", obgynClin: 42, obgynTotal: 170, familyMed: 0, forensic: 0, ophthClin: 0, ophthTotal: 0, radiology: 0, obgynStatus: "ناجح", familyMedStatus: "غياب", forensicStatus: "غياب", ophthStatus: "غياب", radiologyStatus: "غياب" }
+        ];
+
+        // ============================================================
+        // دوال التقدير
+        // ============================================================
+        function getObgynGrade(clin, total) {
+            if (clin < 36 || total < 120) return "راسب";
+            if (total >= 170) return "ممتاز";
+            if (total >= 150) return "جيد جداً";
+            if (total >= 130) return "جيد";
+            return "مقبول";
+        }
+        function getFamilyMedGrade(total) {
+            if (total < 180) return "راسب";
+            if (total >= 255) return "ممتاز";
+            if (total >= 225) return "جيد جدا";
+            if (total >= 195) return "جيد";
+            return "مقبول";
+        }
+        function getForensicGrade(total) {
+            if (total < 60) return "راسب";
+            if (total >= 85) return "ممتاز";
+            if (total >= 75) return "جيد جدا";
+            if (total >= 65) return "جيد";
+            return "مقبول";
+        }
+        function getOphthGrade(clin, total) {
+            if (clin < 24 || total < 60) return "راسب";
+            if (total >= 85) return "ممتاز";
+            if (total >= 75) return "جيد جداً";
+            if (total >= 65) return "جيد";
+            return "مقبول";
+        }
+        function getRadiologyGrade(total) {
+            if (total < 60) return "راسب";
+            if (total >= 85) return "ممتاز";
+            if (total >= 75) return "جيد جدا";
+            if (total >= 65) return "جيد";
+            return "مقبول";
+        }
+        function gradeToClass(grade) {
+            if (grade === "ممتاز") return "excellent";
+            if (grade === "جيد جداً" || grade === "جيد جدا") return "verygood";
+            if (grade === "جيد") return "good";
+            if (grade === "مقبول") return "pass";
+            return "fail";
+        }
+
+        // ============================================================
+        // حساب النتائج لكل طالب
+        // ============================================================
+        studentsRaw.forEach(s => {
+            s.obgynGrade = getObgynGrade(s.obgynClin, s.obgynTotal);
+            s.familyMedGrade = getFamilyMedGrade(s.familyMed);
+            s.forensicGrade = getForensicGrade(s.forensic);
+            s.ophthGrade = getOphthGrade(s.ophthClin, s.ophthTotal);
+            s.radiologyGrade = getRadiologyGrade(s.radiology);
+
+            s.obgynPass = s.obgynGrade !== "راسب";
+            s.familyMedPass = s.familyMedGrade !== "راسب";
+            s.forensicPass = s.forensicGrade !== "راسب";
+            s.ophthPass = s.ophthGrade !== "راسب";
+            s.radiologyPass = s.radiologyGrade !== "راسب";
+
+            s.totalOverall = round2(s.obgynTotal + s.familyMed + s.forensic + s.ophthTotal + s.radiology);
+            s.isAbsent = (s.totalOverall === 0);
+
+            if (s.isAbsent) {
+                s.passOverall = false;
+                s.percentage = 0;
+                s.finalGrade = "راسب";
+            } else {
+                s.passOverall = s.obgynPass && s.familyMedPass && s.forensicPass && s.ophthPass && s.radiologyPass;
+                if (s.passOverall) {
+                    s.percentage = round2((s.totalOverall / 800) * 100);
+                    if (s.totalOverall >= 680) s.finalGrade = "ممتاز";
+                    else if (s.totalOverall >= 600) s.finalGrade = "جيد جدا";
+                    else if (s.totalOverall >= 520) s.finalGrade = "جيد";
+                    else if (s.totalOverall >= 480) s.finalGrade = "مقبول";
+                    else s.finalGrade = "راسب";
+                } else {
+                    s.percentage = 0;
+                    s.finalGrade = "راسب";
+                }
+            }
+        });
+
+        // ============================================================
+        // الإحصاء العام
+        // ============================================================
+        const totalAll = studentsRaw.length;
+        const absentAll = studentsRaw.filter(s => s.isAbsent).length;
+        const presentAll = totalAll - absentAll;
+        const passedAll = studentsRaw.filter(s => s.passOverall && !s.isAbsent).length;
+        const failedAll = presentAll - passedAll;
+
+        const passRateTotal = round2(passedAll / totalAll * 100);
+        const passRatePresent = round2(passedAll / presentAll * 100);
+
+        const gradeDist = { "ممتاز": 0, "جيد جدا": 0, "جيد": 0, "مقبول": 0, "راسب": 0 };
+        studentsRaw.forEach(s => {
+            if (!s.isAbsent) {
+                if (s.finalGrade === "ممتاز") gradeDist["ممتاز"]++;
+                else if (s.finalGrade === "جيد جدا") gradeDist["جيد جدا"]++;
+                else if (s.finalGrade === "جيد") gradeDist["جيد"]++;
+                else if (s.finalGrade === "مقبول") gradeDist["مقبول"]++;
+                else gradeDist["راسب"]++;
+            }
+        });
+
+        document.getElementById('basicStatsRow').innerHTML = `
+            <div class="stat-card"><div class="title">📊 العدد الكلي</div><div class="val">${totalAll}</div></div>
+            <div class="stat-card"><div class="title">🚫 الغياب</div><div class="val">${absentAll}</div><div class="perc">${(absentAll/totalAll*100).toFixed(2)}%</div></div>
+            <div class="stat-card"><div class="title">✅ الحضور</div><div class="val">${presentAll}</div><div class="perc">${(presentAll/totalAll*100).toFixed(2)}%</div></div>
+        `;
+
+        document.getElementById('successRateBox').innerHTML = `
+            <div class="stat-card success-rate-card"><div class="title">⭐ نسبة النجاح (من الكلي)</div><div class="val">${passRateTotal.toFixed(2)}%</div><div class="perc">${passedAll} ناجح من ${totalAll}</div></div>
+            <div class="stat-card success-rate-card"><div class="title">⭐ نسبة النجاح (من الحضور)</div><div class="val">${passRatePresent.toFixed(2)}%</div><div class="perc">${passedAll} ناجح من ${presentAll}</div></div>
+        `;
+
+        document.getElementById('passFailStatsRow').innerHTML = `
+            <div class="stat-card" style="border-color:#2ecc71;"><div class="title">✅ الناجحون (من الحضور)</div><div class="val">${passedAll}</div><div class="perc">من الحضور: ${(passedAll/presentAll*100).toFixed(2)}%</div></div>
+            <div class="stat-card" style="border-color:#e74c3c;"><div class="title">❌ الراسبون (من الحضور)</div><div class="val">${failedAll}</div><div class="perc">من الحضور: ${(failedAll/presentAll*100).toFixed(2)}%</div></div>
+        `;
+
+        document.getElementById('gradeStatsRow').innerHTML = `
+            <div class="stat-card"><div class="title">🏆 ممتاز</div><div class="val">${gradeDist["ممتاز"]||0}</div><div class="perc">${(gradeDist["ممتاز"]/totalAll*100).toFixed(2)}%</div></div>
+            <div class="stat-card"><div class="title">🌟 جيد جدا</div><div class="val">${gradeDist["جيد جدا"]||0}</div><div class="perc">${(gradeDist["جيد جدا"]/totalAll*100).toFixed(2)}%</div></div>
+            <div class="stat-card"><div class="title">👍 جيد</div><div class="val">${gradeDist["جيد"]||0}</div><div class="perc">${(gradeDist["جيد"]/totalAll*100).toFixed(2)}%</div></div>
+            <div class="stat-card"><div class="title">✅ مقبول</div><div class="val">${gradeDist["مقبول"]||0}</div><div class="perc">${(gradeDist["مقبول"]/totalAll*100).toFixed(2)}%</div></div>
+            <div class="stat-card"><div class="title">❌ راسب (من الحضور)</div><div class="val">${gradeDist["راسب"]||0}</div><div class="perc">${(gradeDist["راسب"]/totalAll*100).toFixed(2)}%</div></div>
+        `;
+
+        new Chart(document.getElementById('passFailChart'), {
+            type: 'pie',
+            data: {
+                labels: ['ناجحين', 'راسبين (حضور)', 'غياب'],
+                datasets: [{ data: [passedAll, failedAll, absentAll], backgroundColor: ['#2ecc71', '#e74c3c', '#95a5a6'] }]
+            }
+        });
+        new Chart(document.getElementById('gradesChart'), {
+            type: 'bar',
+            data: {
+                labels: Object.keys(gradeDist),
+                datasets: [{ label: 'عدد الطلاب (من الحضور)', data: Object.values(gradeDist), backgroundColor: '#3a7ca5' }]
+            }
+        });
+
+        // ============================================================
+        // إحصائيات المواد التفصيلية
+        // ============================================================
+        function renderSubjectsStats() {
+            const grid = document.getElementById('subjectsStatsGrid');
+            if (!grid) return;
+            const subjects = [
+                { key: 'obgyn', name: '👶 النساء والتوليد', statusKey: 'obgynStatus', gradeKey: 'obgynGrade', passCheck: (s) => s.obgynPass },
+                { key: 'family', name: '🏥 طب أسرة', statusKey: 'familyMedStatus', gradeKey: 'familyMedGrade', passCheck: (s) => s.familyMedPass },
+                { key: 'forensic', name: '⚖️ طب شرعي', statusKey: 'forensicStatus', gradeKey: 'forensicGrade', passCheck: (s) => s.forensicPass },
+                { key: 'ophth', name: '👁️ طب عيون', statusKey: 'ophthStatus', gradeKey: 'ophthGrade', passCheck: (s) => s.ophthPass },
+                { key: 'radiology', name: '🩻 أشعة', statusKey: 'radiologyStatus', gradeKey: 'radiologyGrade', passCheck: (s) => s.radiologyPass }
+            ];
+            let html = '';
+            subjects.forEach(sub => {
+                const all = studentsRaw;
+                const totalStudents = all.filter(s => s[sub.statusKey] === 'حضور' || s[sub.statusKey] === 'غياب').length;
+                const totalExempt = all.filter(s => s[sub.statusKey] === 'ناجح').length;
+                const totalAbsent = all.filter(s => s[sub.statusKey] === 'غياب').length;
+                const totalPresent = all.filter(s => s[sub.statusKey] === 'حضور').length;
+                const totalPassed = all.filter(s => s[sub.statusKey] === 'حضور' && sub.passCheck(s)).length;
+                const totalFailed = totalPresent - totalPassed;
+                const dist = { "ممتاز": 0, "جيد جداً": 0, "جيد": 0, "مقبول": 0, "راسب": 0 };
+                all.filter(s => s[sub.statusKey] === 'حضور').forEach(s => {
+                    const g = s[sub.gradeKey];
+                    if (g === "ممتاز") dist["ممتاز"]++;
+                    else if (g === "جيد جداً" || g === "جيد جدا") dist["جيد جداً"]++;
+                    else if (g === "جيد") dist["جيد"]++;
+                    else if (g === "مقبول") dist["مقبول"]++;
+                    else dist["راسب"]++;
+                });
+                const rateFromTotal = totalStudents > 0 ? round2(totalPassed / totalStudents * 100) : 0;
+                const rateFromPresent = totalPresent > 0 ? round2(totalPassed / totalPresent * 100) : 0;
+                html += `
+                    <div class="subject-card">
+                        <div class="subject-name">${sub.name}</div>
+                        <div class="subject-stats-row">
+                            <div class="mini-stat"><div class="mini-title">📊 العدد الكلي (حضور+غياب)</div><div class="mini-val">${totalStudents}</div></div>
+                            <div class="mini-stat" style="border-color:#9b59b6;"><div class="mini-title">🎓 ناجحون سابقاً</div><div class="mini-val">${totalExempt}</div></div>
+                            <div class="mini-stat" style="border-color:#95a5a6;"><div class="mini-title">🚫 الغياب</div><div class="mini-val">${totalAbsent}</div></div>
+                            <div class="mini-stat" style="border-color:#2ecc71;"><div class="mini-title">✅ الحضور</div><div class="mini-val">${totalPresent}</div></div>
+                        </div>
+                        <div class="subject-stats-row">
+                            <div class="mini-stat success-rate-card" style="flex:2;"><div class="mini-title">⭐ نسبة النجاح (من الكلي)</div><div class="mini-val">${rateFromTotal.toFixed(2)}%</div><div class="mini-perc">${totalPassed} ناجح من ${totalStudents}</div></div>
+                            <div class="mini-stat success-rate-card" style="flex:2;"><div class="mini-title">⭐ نسبة النجاح (من الحضور)</div><div class="mini-val">${rateFromPresent.toFixed(2)}%</div><div class="mini-perc">${totalPassed} ناجح من ${totalPresent}</div></div>
+                        </div>
+                        <div class="subject-grade-dist">
+                            <span class="gd-item">🏆 ممتاز <span>${dist["ممتاز"]}</span></span>
+                            <span class="gd-item">🌟 جيد جداً <span>${dist["جيد جداً"]}</span></span>
+                            <span class="gd-item">👍 جيد <span>${dist["جيد"]}</span></span>
+                            <span class="gd-item">✅ مقبول <span>${dist["مقبول"]}</span></span>
+                            <span class="gd-item" style="background:#f8d7da;">❌ راسب <span>${dist["راسب"]}</span></span>
+                        </div>
+                    </div>
+                `;
+            });
+            grid.innerHTML = html;
+        }
+
+        // ============================================================
+        // أزرار التحكم
+        // ============================================================
+        document.getElementById('statsToggleBtn').onclick = () => {
+            const container = document.getElementById('statsContainer');
+            container.classList.toggle('active');
+            document.getElementById('statsToggleBtn').textContent = container.classList.contains('active') ? '📊 إخفاء الإحصائيات العامة' : '📊 عرض الإحصائيات العامة';
+        };
+        document.getElementById('subjectsToggleBtn').onclick = () => {
+            const container = document.getElementById('subjectsStatsContainer');
+            container.classList.toggle('active');
+            if (container.classList.contains('active')) {
+                document.getElementById('subjectsToggleBtn').textContent = '📈 إخفاء إحصائيات المواد التفصيلية';
+                renderSubjectsStats();
+            } else {
+                document.getElementById('subjectsToggleBtn').textContent = '📈 عرض إحصائيات المواد التفصيلية';
+            }
+        };
+
+        // ============================================================
+        // البحث عن الطالب
+        // ============================================================
+        function findStudentById(id) {
+            return studentsRaw.find(s => s.id === id.trim());
+        }
+        function searchAndDisplay() {
+            const id = document.getElementById('studentIdInput').value.trim();
+            if (!id) {
+                document.getElementById('resultContainer').innerHTML = '<div style="text-align:center;padding:50px 20px;"><span style="font-size:1.5rem;">⚠️ الرجاء إدخال رقمك الدراسي</span></div>';
+                return;
+            }
+            const s = findStudentById(id);
+            if (!s) {
+                document.getElementById('resultContainer').innerHTML = '<div style="text-align:center;padding:50px 20px;color:red;"><span style="font-size:1.5rem;">❌ رقم دراسي غير صحيح أو غير مسجل في الدور الثاني</span><br><span style="font-size:1rem;">النتائج خاصة بأصحاب الأرقام فقط</span></div>';
+                return;
+            }
+            const subjects = [
+                { name: "النساء والتوليد", icon: "👶", clin: s.obgynClin, clinMax: 60, clinPass: 36, total: s.obgynTotal, totalMax: 200, totalPass: 120, grade: s.obgynGrade, gradeClass: gradeToClass(s.obgynGrade) },
+                { name: "طب أسرة", icon: "🏥", clin: null, clinMax: null, clinPass: null, total: s.familyMed, totalMax: 300, totalPass: 180, grade: s.familyMedGrade, gradeClass: gradeToClass(s.familyMedGrade) },
+                { name: "طب شرعي", icon: "⚖️", clin: null, clinMax: null, clinPass: null, total: s.forensic, totalMax: 100, totalPass: 60, grade: s.forensicGrade, gradeClass: gradeToClass(s.forensicGrade) },
+                { name: "طب عيون", icon: "👁️", clin: s.ophthClin, clinMax: 40, clinPass: 24, total: s.ophthTotal, totalMax: 100, totalPass: 60, grade: s.ophthGrade, gradeClass: gradeToClass(s.ophthGrade) },
+                { name: "أشعة", icon: "🩻", clin: null, clinMax: null, clinPass: null, total: s.radiology, totalMax: 100, totalPass: 60, grade: s.radiologyGrade, gradeClass: gradeToClass(s.radiologyGrade) }
+            ];
+            let rowsHtml = '';
+            for (let sub of subjects) {
+                const clinHtml = sub.clin !== null ? `<span class="numeric-cell">${sub.clin}</span><div class="score-info">العظمى: ${sub.clinMax} | النجاح: ${sub.clinPass}</div>` : '—';
+                const totalHtml = `<span class="numeric-cell">${sub.total.toFixed(2)}</span><div class="score-info">العظمى: ${sub.totalMax} | النجاح: ${sub.totalPass}</div>`;
+                rowsHtml += `<tr>
+                    <td><span>${sub.icon} ${sub.name}</span></td>
+                    <td style="text-align:center">${clinHtml}</td>
+                    <td style="text-align:center">${totalHtml}</td>
+                    <td style="text-align:center"><span class="grade-badge ${sub.gradeClass}">${sub.grade}</span></td>
+                </tr>`;
+            }
+            const totalPercentage = s.percentage.toFixed(2);
+            const gradeBg = s.finalGrade === 'ممتاز' ? '#27ae60' : s.finalGrade === 'جيد جدا' ? '#82e0aa' : s.finalGrade === 'جيد' ? '#3498db' : s.finalGrade === 'مقبول' ? '#f39c12' : '#e74c3c';
+            let statusMessage = '';
+            if (s.isAbsent) statusMessage = '🚫 هذا الطالب غائب عن جميع الامتحانات';
+            document.getElementById('resultContainer').innerHTML = `
+                <div class="student-header"><div class="student-name">${s.name}</div><div class="student-id">${s.id}</div></div>
+                ${statusMessage ? `<div style="background:#f8d7da; color:#721c24; padding:10px; border-radius:20px; text-align:center; font-size:1.2rem; margin-bottom:15px;">${statusMessage}</div>` : ''}
+                <table class="grades-table"><thead><tr><th>المادة</th><th>الدرجة السريرية</th><th>المجموع الكلي</th><th>التقدير</th></tr></thead><tbody>${rowsHtml}</tbody></table>
+                <div class="final-summary">
+                    <div class="summary-item"><div class="label">المجموع الكلي</div><div class="value grade-value" style="font-size: 2rem;">${s.totalOverall.toFixed(2)} / 800</div></div>
+                    <div class="summary-item"><div class="label">التقدير العام</div><div class="value grade-value" style="background: ${gradeBg}; color: white; padding: 10px 25px; border-radius: 50px; font-size: 1.8rem; font-weight: 900;">${s.finalGrade} (${totalPercentage}%)</div></div>
+                    <div class="summary-item"><div class="label">الحالة</div><div class="value grade-value" style="background: ${s.passOverall ? '#27ae60' : '#e74c3c'}; color: white; padding: 10px 25px; border-radius: 50px; font-size: 1.8rem; font-weight: 900;">${s.passOverall ? '✅ ناجح' : '❌ راسب'}</div></div>
+                </div>
+                <div class="signatures">
+                    <div class="signature-item"><div class="signature-title">عميد الكلية</div><div class="signature-name">د. فتحي البركي</div></div>
+                    <div class="signature-item"><div class="signature-title">مسجل الكلية</div><div class="signature-name">أ. طاهر الدرسي</div></div>
+                    <div class="signature-item"><div class="signature-title">رئيس قسم الدراسة والامتحانات</div><div class="signature-name">د. صالح الاوجلي</div></div>
+                </div>
+                <div style="text-align:center; margin-top:20px;"><button class="print-btn" onclick="window.print();">🖨️ طباعة النتيجة</button></div>
+            `;
+        }
+        document.getElementById('searchBtn').onclick = searchAndDisplay;
+        document.getElementById('studentIdInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') searchAndDisplay();
+        });
+    </script>
+</body>
+</html>
